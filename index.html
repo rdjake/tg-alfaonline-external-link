@@ -54,7 +54,7 @@
       const addAndroidLink = () => {
         const androidLink = document.createElement("a");
         androidLink.href =
-          "intent://web.alfabank.ru#Intent;scheme=https;package=com.android.chrome;end";
+          "intent://web.alfabank.ru#Intent;scheme=https;package=com.android.browser;end";
         androidLink.target = "_blank";
         androidLink.textContent = "Открыть Альфа-Онлайн";
         androidLink.className = "alfaBtn";
@@ -96,10 +96,10 @@
       };
     </script>
     <div class="container">
-      <!-- <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
+      <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
 window.Telegram.WebApp.openLink('https://web.alfabank.ru')</textarea
       >
-      <button type="button" onclick="exec(true)">Exec</button> -->
+      <button type="button" onclick="exec(true)">Exec</button>
     </div>
   </body>
 </html>
