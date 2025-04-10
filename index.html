@@ -5,6 +5,10 @@
     <meta charset="utf-8" />
     <title>Главная страница</title>
     <style>
+      html,
+      body {
+        height: 100%;
+      }
       body {
         justify-content: center;
         align-content: center;
@@ -13,17 +17,43 @@
       }
 
       button {
-        padding: 20px 50px;
+        padding: 25px 50px;
         border: none;
+        border-radius: 20px;
+        background-color: #ef3124;
+        color: white;
+        font-size: 20px;
+      }
+      textarea {
+        width: 80%;
       }
     </style>
+    <script>
+      const exec = () => {
+        document
+          .getElementById("codeInput")
+          .value.split("\n")
+          .forEach((line) => {
+            eval(line);
+          });
+      };
+    </script>
   </head>
   <body>
-    <button
-      type="button"
-      onclick="window.Telegram.WebApp.openLink('https://web.alfabank.ru')"
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-items: center;
+        gap: 10px;
+      "
     >
-      Открыть Альфа-Онлайн
-    </button>
+      <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
+window.Telegram.WebApp.openLink('https://web.alfabank.ru')</textarea
+      >
+      <button type="button" onclick="exec()">Открыть Альфа-Онлайн</button>
+    </div>
   </body>
 </html>
