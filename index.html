@@ -20,7 +20,7 @@
         display: flex;
       }
 
-      button {
+      .alfaBtn {
         padding: 20px 40px;
         border: none;
         border-radius: 20px;
@@ -32,7 +32,37 @@
         width: 80%;
       }
     </style>
+  </head>
+  <body>
     <script>
+      const addAndroidLink = () => {
+        const androidLink = document.createElement("a");
+        androidLink.href =
+          "intent://web.alfabank.ru#Intent;scheme=https;package=com.android.chrome;end";
+        androidLink.target = "_blank";
+        androidLink.textContent = "Открыть Альфа Онлайн";
+        androidLink.className = "alfaBtn";
+        document.querySelector("body > div").appendChild(androidLink);
+      };
+
+      const addCommonButton = () => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.onclick =
+          "window.Telegram.WebApp.openLink('https://web.alfabank.ru')";
+        button.className = "alfaBtn";
+        button.textContent = "Открыть Альфа-Онлайн";
+        document.querySelector("body > div").appendChild(button);
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.Telegram.WebApp.platform === "android") {
+          addAndroidLink();
+        } else {
+          addCommonButton();
+        }
+      });
+
       const exec = (full) => {
         const code = document.getElementById("codeInput").value;
         if (full) {
@@ -44,8 +74,6 @@
         }
       };
     </script>
-  </head>
-  <body>
     <div
       style="
         display: flex;
@@ -59,12 +87,7 @@
       <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
 window.Telegram.WebApp.openLink('https://web.alfabank.ru')</textarea
       >
-      <button type="button" onclick="exec(true)">Открыть для IOS</button>
-      <a
-        href="intent://web.alfabank.ru#Intent;scheme=https;package=com.android.chrome;end"
-        target="_blank"
-        >Открыть для Android</a
-      >
+      <button type="button" onclick="exec(true)">Exec</button>
     </div>
   </body>
 </html>
