@@ -53,8 +53,10 @@
     <script>
       const addAndroidLink = () => {
         const androidLink = document.createElement("a");
+        // androidLink.href =
+        //   "intent://web.alfabank.ru#Intent;scheme=https;package=com.android.chrome;end";
         androidLink.href =
-          "intent://web.alfabank.ru#Intent;scheme=https;package=com.android.browser;end";
+          "intent://web.alfabank.ru#Intent;action=android.intent.action.VIEW;scheme=https;end";
         androidLink.target = "_blank";
         androidLink.textContent = "Открыть Альфа-Онлайн";
         androidLink.className = "alfaBtn";
