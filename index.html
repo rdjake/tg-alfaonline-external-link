@@ -14,7 +14,6 @@
         height: 100%;
         font-family: sans-serif;
         overflow: hidden;
-        background-color: white;
       }
       body {
         justify-content: center;
@@ -22,6 +21,7 @@
         align-items: center;
         display: flex;
       }
+
       .container {
         display: flex;
         flex-direction: column;
@@ -40,58 +40,30 @@
         font-size: 18px;
         text-decoration: none;
       }
-
-      textarea {
-        width: 80%;
-      }
     </style>
-  </head>
-  <body>
     <script>
-      const addAndroidLink = () => {
-        const androidLink = document.createElement("a");
-        androidLink.href =
-          "intent://web.alfabank.ru#Intent;action=android.intent.action.VIEW;scheme=https;end";
-        androidLink.target = "_blank";
-        androidLink.textContent = "Открыть Альфа-Онлайн";
-        androidLink.className = "alfaBtn";
-        document.querySelector("body > div").appendChild(androidLink);
-      };
-
-      const addCommonButton = () => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.onclick = () =>
-          window.Telegram.WebApp.openLink("https://web.alfabank.ru");
-        button.className = "alfaBtn";
-        button.textContent = "Открыть Альфа-Онлайн";
-        document.querySelector("body > div").appendChild(button);
-      };
-
       document.addEventListener("DOMContentLoaded", () => {
         if (window.Telegram.WebApp.platform === "android") {
-          addAndroidLink();
+          const androidLink = document.createElement("a");
+          androidLink.href =
+            "intent://web.alfabank.ru#Intent;action=android.intent.action.VIEW;scheme=https;end";
+          androidLink.target = "_blank";
+          androidLink.textContent = "Открыть Альфа-Онлайн";
+          androidLink.className = "alfaBtn";
+          document.querySelector("body > div").appendChild(androidLink);
         } else {
-          addCommonButton();
+          const button = document.createElement("button");
+          button.type = "button";
+          button.onclick = () =>
+            window.Telegram.WebApp.openLink("https://web.alfabank.ru");
+          button.className = "alfaBtn";
+          button.textContent = "Открыть Альфа-Онлайн";
+          document.querySelector("body > div").appendChild(button);
         }
       });
-
-      const exec = (full) => {
-        const code = document.getElementById("codeInput").value;
-        if (full) {
-          eval(code);
-        } else {
-          code.split("\n").forEach((line) => {
-            eval(line);
-          });
-        }
-      };
     </script>
-    <div class="container">
-      <!-- <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
-window.Telegram.WebApp.openLink('https://web.alfabank.ru')</textarea
-      >
-      <button type="button" onclick="exec(true)">Exec</button> -->
-    </div>
+  </head>
+  <body>
+    <div class="container"></div>
   </body>
 </html>
