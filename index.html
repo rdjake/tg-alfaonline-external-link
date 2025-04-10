@@ -12,12 +12,22 @@
       html,
       body {
         height: 100%;
+        font-family: sans-serif;
+        background-color: white;
       }
       body {
         justify-content: center;
         align-content: center;
         align-items: center;
         display: flex;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-items: center;
+        gap: 10px;
       }
 
       .alfaBtn {
@@ -28,7 +38,10 @@
         color: white;
         font-size: 18px;
         text-decoration: none;
-        font-family: sans-serif;
+      }
+      .hint {
+        font-size: 12px;
+        color: #00000061;
       }
       textarea {
         width: 80%;
@@ -42,16 +55,21 @@
         androidLink.href =
           "intent://web.alfabank.ru#Intent;scheme=https;package=com.android.chrome;end";
         androidLink.target = "_blank";
-        androidLink.textContent = "Открыть Альфа Онлайн";
+        androidLink.textContent = "Открыть Альфа-Онлайн";
         androidLink.className = "alfaBtn";
         document.querySelector("body > div").appendChild(androidLink);
+
+        const hint = document.createElement("span");
+        hint.textContent = "Работает только в Google Chrome";
+        hint.className = "hint";
+        document.querySelector("body > div").appendChild(hint);
       };
 
       const addCommonButton = () => {
         const button = document.createElement("button");
         button.type = "button";
-        button.onclick =
-          "window.Telegram.WebApp.openLink('https://web.alfabank.ru')";
+        button.onclick = () =>
+          window.Telegram.WebApp.openLink("https://web.alfabank.ru");
         button.className = "alfaBtn";
         button.textContent = "Открыть Альфа-Онлайн";
         document.querySelector("body > div").appendChild(button);
@@ -76,20 +94,11 @@
         }
       };
     </script>
-    <div
-      style="
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        justify-items: center;
-        gap: 10px;
-      "
-    >
-      <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
+    <div class="container">
+      <!-- <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
 window.Telegram.WebApp.openLink('https://web.alfabank.ru')</textarea
       >
-      <button type="button" onclick="exec(true)">Exec</button>
+      <button type="button" onclick="exec(true)">Exec</button> -->
     </div>
   </body>
 </html>
