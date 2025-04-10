@@ -21,25 +21,27 @@
       }
 
       button {
-        padding: 25px 50px;
+        padding: 20px 40px;
         border: none;
         border-radius: 20px;
         background-color: #ef3124;
         color: white;
-        font-size: 20px;
+        font-size: 18px;
       }
       textarea {
         width: 80%;
       }
     </style>
     <script>
-      const exec = () => {
-        document
-          .getElementById("codeInput")
-          .value.split("\n")
-          .forEach((line) => {
+      const exec = (full) => {
+        const code = document.getElementById("codeInput").value;
+        if (full) {
+          eval(code);
+        } else {
+          code.split("\n").forEach((line) => {
             eval(line);
           });
+        }
       };
     </script>
   </head>
@@ -57,7 +59,8 @@
       <textarea type="text" id="codeInput" rows="5" placeholder="onClick">
 window.Telegram.WebApp.openLink('https://web.alfabank.ru')</textarea
       >
-      <button type="button" onclick="exec()">Открыть Альфа-Онлайн</button>
+      <button type="button" onclick="exec(true)">Single eval</button>
+      <button type="button" onclick="exec(false)">Line eval</button>
     </div>
   </body>
 </html>
